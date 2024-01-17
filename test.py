@@ -1,24 +1,22 @@
-#     *
-#    ***
-#   *****
-#  *******
-# *********
-#  *******
-#   *****
-#    ***
-#     *
+array_row_column = []
+temp_row = []
+array_row_max = []
+array_row_max_index = []
 
-N = int(input())
+max_row = 0
+max_column = 0
 
-list_star = []
-blank = []
-
-for i in range(N):
-    list_star.append("*" * (2*(N-i)-1))
-    blank.append(" "*i)
+for i in range(9):
+    temp_row = list(map(int,input().split()))
+    array_row_column.append(temp_row)
     
-for i in range(2*N-1):
-    if i < N:
-        print(f'{blank[N-i-1]}{list_star[N-i-1]}')
-    else:
-        print(f'{blank[i-N+1]}{list_star[i-N+1]}')
+    array_row_max.append(max(temp_row))
+    
+    temp_row = []
+    
+max_row = max(*array_row_max)
+max_row_index = array_row_max.index(max_row)
+max_column_index = array_row_column[max_row_index].index(max_row)
+
+print(max_row)
+print(f'{max_row_index+1} {max_column_index+1}')
